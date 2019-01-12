@@ -3,6 +3,7 @@
 ; Author: Daniele Votta
 ; Description: This program prints "Hello World!" on the screen.
 ;
+; cat /usr/include/i386-linux-gnu/asm/unistd_32.h 
 ; Write: FC 4 - SYNOPSIS
 ;       #include <unistd.h>
 ;       ssize_t write(int fd, const void *buf, size_t count);
@@ -11,8 +12,10 @@
 ;      #include <unistd.h>
 ;      void _exit(int status);
 
-global _start
+global _start:
+
 section .text
+
 _start:
         ; Print Message
         mov eax,0x4             ; 4 -> FC for write
@@ -24,6 +27,7 @@ _start:
         mov eax,0x1             ; 1 -> FC for exit
         mov ebx,0x5             ; return value
         int 0x80                ; syscall
+
 section .data
         message: db "Hello World!"
         mlen equ $-message
