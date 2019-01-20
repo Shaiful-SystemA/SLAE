@@ -1,7 +1,7 @@
 ; Date: 20/01/2019
-; Procedure.asm
+; Procedure2.asm
 ; Author: Daniele Votta
-; Description: Procedures.
+; Description: Procedures - Preserve ebp, registers and flags.
 ;
 ; cat /usr/include/i386-linux-gnu/asm/unistd_32.h 
 ; Write: FC 4 - SYNOPSIS
@@ -17,6 +17,9 @@ global _start:
 section .text
 	
 HelloWorldProc:
+
+	push ebp
+	mov ebp,esp
 	
 	; Print Message
         mov eax,0x4             ; 4 -> FC for write
@@ -24,6 +27,11 @@ HelloWorldProc:
         mov ecx,message         ; message
         mov edx,mlen            ; length
         int 0x80                ; syscall
+
+	; mov esp,ebp
+	; pop ebp
+	
+	leave
 	ret			; Return | eip popped from the stack
 
 _start:
@@ -31,10 +39,18 @@ _start:
 	mov ecx,0x10		; Loop Counter -> 10hex = 16dec | 16 times
 
 PrintHelloWorld:
-	
-	push ecx		; Save counter to stack
+
+	; preserve registers and flags
+
+	pushad
+	pushfd
 	call HelloWorldProc	; Call procedure -> HelloWorldProc | eip pushed automaticallly to the stack
-	pop ecx			; Load counter from stack
+
+	; restore registers and stack
+
+	popfd
+	popad
+
 	loop PrintHelloWorld	; (Loop) jump to PrintHelloWorld if ecx is not 0 | automatically decrement ecx (not require dec ecx)
 
 	; Exit Gracefully
