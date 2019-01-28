@@ -8,10 +8,6 @@
 ;      #include <unistd.h>
 ;      int execve(const char *filename, char *const argv[], char *const envp[]);
 ;
-; Exit: FC 1 - SYNOPSIS
-;      #include <unistd.h>
-;      void _exit(int status);
-;
 ; filename -> /bin/bash, 0x0 -> EBX
 ; argv[] -> Address of /bin/bash, 0x00000000 -> ECX
 ; envp[] -> 0x00000000 -> EDX
