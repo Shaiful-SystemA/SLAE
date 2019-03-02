@@ -35,7 +35,7 @@ section .data				; Initialized Data
 	var4: dd 0xAABBCCDD		; word
 	var5: dd 0x112233		; word
 	var6: TIMES 6 db 0xFF		; single byte for 6 times
-        message: db "Hello World!"
+        message: db "Hello World!",0xa
         mlen equ $-message
 
 section .bss				; Uninitialized Data

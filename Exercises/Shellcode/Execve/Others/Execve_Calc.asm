@@ -2,6 +2,7 @@
 ; Execve_Calc.asm
 ; Author: Daniele Votta
 ; Description: This program invoke excve to run terminal calculator (bc).
+; Tested on: i686 GNU/Linux
 ; JMP | CALL | POP | Techniques
 ;
 ; SYNOPSIS
@@ -12,7 +13,7 @@
 ; argv[] -> Address of /usr/bin/bc, 0x00000000 -> ECX
 ; envp[] -> 0x00000000 -> EDX
 ; Structure like this -> /usr/bin/bc|A|BBBB|CCCC
-
+;
 ; section wtext exec write | to make the .text section writable | Otherwise pass -N to the linker
 
 global _start

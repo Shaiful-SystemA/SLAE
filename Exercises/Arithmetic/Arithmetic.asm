@@ -64,7 +64,7 @@ _start:
 	mov eax,10
 	sub eax,5
 	stc					; set carry flag
-	sbb eax,4				sub with carry (sub value 4 -1 if CF is setted)
+	sbb eax,4				; sub with carry (sub value 4 -1 if CF is setted)
 
 	; increment and decrement
 

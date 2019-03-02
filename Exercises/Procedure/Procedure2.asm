@@ -60,5 +60,5 @@ PrintHelloWorld:
 
 section .data
 	
-	message: db "Hello World!"
+	message: db "Hello World!", 0xa
         mlen equ $-message
